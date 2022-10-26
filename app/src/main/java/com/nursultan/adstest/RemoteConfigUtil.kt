@@ -19,9 +19,9 @@ class RemoteConfigUtil {
         val remoteConfig = Firebase.remoteConfig
         val configSettings = remoteConfigSettings {
             minimumFetchIntervalInSeconds = if (BuildConfig.DEBUG) {
-                0
+                DEBUG_TIME_IN_SECONDS
             } else {
-                3600
+                MINIMUM_FETCH_TIME
             }
         }
         remoteConfig.setConfigSettingsAsync(configSettings)
@@ -39,6 +39,8 @@ class RemoteConfigUtil {
 
     companion object {
         private const val URL_KEY = "url"
+        private const val DEBUG_TIME_IN_SECONDS = 0L
+        private const val MINIMUM_FETCH_TIME = 3600L
     }
 
 }
