@@ -1,7 +1,6 @@
 package com.nursultan.adstest
 
 
-import android.annotation.SuppressLint
 import android.util.Log
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.remoteconfig.FirebaseRemoteConfig
