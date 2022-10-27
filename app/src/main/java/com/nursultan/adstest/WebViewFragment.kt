@@ -4,6 +4,8 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.webkit.WebView
+import android.webkit.WebViewClient
 import androidx.fragment.app.Fragment
 import com.nursultan.adstest.databinding.FragmentWebviewBinding
 
@@ -11,6 +13,8 @@ class WebViewFragment : Fragment() {
     private var _binding: FragmentWebviewBinding? = null
     private val binding: FragmentWebviewBinding
         get() = _binding ?: throw RuntimeException("FragmentWebViewBinding is null")
+    private lateinit var url: String
+
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -21,9 +25,26 @@ class WebViewFragment : Fragment() {
         return binding.root
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        url = arguments.getString(RemoteConfigUtil.URL_KEY)
+            ?: throw RuntimeException("url is null")
+        binding.mainWebView.webViewClient = object : WebViewClient(){
+            override fun shouldOverrideUrlLoading(view: WebView?, url: String?): Boolean {
+                view?.loadUrl(url)
+                return super.shouldOverrideUrlLoading(view, url)
+            }
+        }
+    }
+
     companion object {
-        fun newInstance(): WebViewFragment {
-            return WebViewFragment()
+
+        fun newInstance(url: String): WebViewFragment {
+            return WebViewFragment().apply {
+                arguments = Bundle().apply {
+                    putString(RemoteConfigUtil.URL_KEY, url)
+                }
+            }
         }
     }
 }

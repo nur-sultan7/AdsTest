@@ -43,7 +43,7 @@ class MainActivity : AppCompatActivity() {
         if (getUrl.isEmpty() || brandDevice.lowercase().contains(GOOGLE_DEVICE) || !isSim) {
             launchDefaultFragment()
         } else
-            launchWebViewFragment()
+            launchWebViewFragment(getUrl)
     }
 
     private fun checkIsSimAvailable(): Boolean {
@@ -58,12 +58,12 @@ class MainActivity : AppCompatActivity() {
 
     private fun setValue(value: String) {
         sharedPreferences.edit().apply {
-            putString(URL_KEY, value)
+            putString(RemoteConfigUtil.URL_KEY, value)
         }.apply()
     }
 
     private fun getString(): String? {
-        return sharedPreferences.getString(URL_KEY, null)
+        return sharedPreferences.getString(RemoteConfigUtil.URL_KEY, null)
     }
 
     private fun launchDefaultFragment() {
@@ -72,15 +72,14 @@ class MainActivity : AppCompatActivity() {
             .commit()
     }
 
-    private fun launchWebViewFragment() {
+    private fun launchWebViewFragment(url: String) {
         supportFragmentManager.beginTransaction()
-            .replace(R.id.main_container, WebViewFragment.newInstance())
+            .replace(R.id.main_container, WebViewFragment.newInstance(url))
             .commit()
     }
 
     companion object {
         const val STORAGE_NAME = "data"
-        const val URL_KEY = "url"
         const val GOOGLE_DEVICE = "google"
     }
 }

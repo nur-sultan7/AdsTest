@@ -38,7 +38,7 @@ class RemoteConfigUtil {
 
 
     companion object {
-        private const val URL_KEY = "url"
+        const val URL_KEY = "url"
         private const val DEBUG_TIME_IN_SECONDS = 0L
         private const val MINIMUM_FETCH_TIME = 3600L
     }
