@@ -1,4 +1,4 @@
-package com.nursultan.adstest
+package com.nursultan.adstest.presentation
 
 import android.app.Application
 

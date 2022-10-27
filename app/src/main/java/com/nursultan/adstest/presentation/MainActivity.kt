@@ -1,4 +1,4 @@
-package com.nursultan.adstest
+package com.nursultan.adstest.presentation
 
 import android.content.Context
 import android.os.Build
@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.telephony.TelephonyManager
 import androidx.appcompat.app.AppCompatActivity
 import androidx.viewbinding.ViewBinding
+import com.nursultan.adstest.R
 import com.nursultan.adstest.databinding.ActivityMainBinding
 
 
@@ -80,6 +81,6 @@ class MainActivity : AppCompatActivity() {
 
     companion object {
         const val STORAGE_NAME = "data"
-        const val GOOGLE_DEVICE = "google2"
+        const val GOOGLE_DEVICE = "google"
     }
 }
