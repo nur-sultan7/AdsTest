@@ -11,7 +11,9 @@ import com.nursultan.adstest.databinding.ActivityMainBinding
 
 
 class MainActivity : AppCompatActivity() {
+
     private lateinit var binding: ViewBinding
+
     private val remoteConfig by lazy {
         (application as AdsApp).remoteConfigUtil
     }

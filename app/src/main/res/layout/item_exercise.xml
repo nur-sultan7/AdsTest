@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content">
 
     <androidx.cardview.widget.CardView
         android:layout_width="0dp"
@@ -19,11 +19,12 @@
 
             <ImageView
                 android:id="@+id/ivExercise"
-                android:layout_width="100dp"
-                android:layout_height="100dp"
+                android:layout_width="144dp"
+                android:layout_height="144dp"
+                android:contentDescription="@string/exercise_image"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                android:contentDescription="@string/exercise_image"
+                tools:ignore="ImageContrastCheck"
                 tools:srcCompat="@tools:sample/avatars" />
 
             <TextView
