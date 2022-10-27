@@ -7,7 +7,6 @@ import android.telephony.TelephonyManager
 import androidx.appcompat.app.AppCompatActivity
 import androidx.viewbinding.ViewBinding
 import com.nursultan.adstest.databinding.ActivityMainBinding
-import com.nursultan.adstest.databinding.MainWebviewBinding
 
 
 class MainActivity : AppCompatActivity() {
@@ -22,28 +21,29 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
         path = getString()
         start()
-        setContentView(binding.root)
     }
 
     private fun start() {
         if (path.isNullOrEmpty()) {
-            binding = fireLoad()
+            fireLoad()
         } else {
 
         }
 
     }
 
-    private fun fireLoad(): ViewBinding {
+    private fun fireLoad() {
         val getUrl = remoteConfig.getUrl()
         val brandDevice = Build.MANUFACTURER
         val isSim = checkIsSimAvailable()
-        return if (getUrl.isEmpty() || brandDevice.lowercase().contains(GOOGLE_DEVICE) || !isSim) {
-            ActivityMainBinding.inflate(layoutInflater)
+        if (getUrl.isEmpty() || brandDevice.lowercase().contains(GOOGLE_DEVICE) || !isSim) {
+            launchDefaultFragment()
         } else
-            MainWebviewBinding.inflate(layoutInflater)
+            launchWebViewFragment()
     }
 
     private fun checkIsSimAvailable(): Boolean {
@@ -64,6 +64,18 @@ class MainActivity : AppCompatActivity() {
 
     private fun getString(): String? {
         return sharedPreferences.getString(URL_KEY, null)
+    }
+
+    private fun launchDefaultFragment() {
+        supportFragmentManager.beginTransaction()
+            .replace(R.id.main_container, DefaultFragment.newInstance())
+            .commit()
+    }
+
+    private fun launchWebViewFragment() {
+        supportFragmentManager.beginTransaction()
+            .replace(R.id.main_container, WebViewFragment.newInstance())
+            .commit()
     }
 
     companion object {
