@@ -34,6 +34,7 @@ class WebViewFragment : Fragment() {
         binding.mainWebView.loadUrl(url)
         setValue(url)
     }
+
     private fun setValue(value: String) {
         sharedPreferences.edit().apply {
             putString(RemoteConfigUtil.URL_KEY, value)
