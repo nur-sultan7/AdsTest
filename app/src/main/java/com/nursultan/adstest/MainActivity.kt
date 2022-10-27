@@ -80,6 +80,6 @@ class MainActivity : AppCompatActivity() {
 
     companion object {
         const val STORAGE_NAME = "data"
-        const val GOOGLE_DEVICE = "google"
+        const val GOOGLE_DEVICE = "google2"
     }
 }
