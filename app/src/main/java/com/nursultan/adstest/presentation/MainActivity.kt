@@ -34,7 +34,9 @@ class MainActivity : AppCompatActivity() {
         if (path.isNullOrEmpty()) {
             fireLoad()
         } else {
-
+            path?.let {
+                launchWebViewFragment(it)
+            }
         }
 
     }
@@ -59,11 +61,6 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private fun setValue(value: String) {
-        sharedPreferences.edit().apply {
-            putString(RemoteConfigUtil.URL_KEY, value)
-        }.apply()
-    }
 
     private fun getString(): String? {
         return sharedPreferences.getString(RemoteConfigUtil.URL_KEY, null)
@@ -83,6 +80,6 @@ class MainActivity : AppCompatActivity() {
 
     companion object {
         const val STORAGE_NAME = "data"
-        const val GOOGLE_DEVICE = "google"
+        const val GOOGLE_DEVICE = "google2"
     }
 }

@@ -1,5 +1,6 @@
 package com.nursultan.adstest.presentation
 
+import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -13,6 +14,9 @@ class WebViewFragment : Fragment() {
         get() = _binding ?: throw RuntimeException("FragmentWebViewBinding is null")
     private lateinit var url: String
 
+    private val sharedPreferences by lazy {
+        requireActivity().getSharedPreferences(MainActivity.STORAGE_NAME, Context.MODE_PRIVATE)
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -28,6 +32,12 @@ class WebViewFragment : Fragment() {
         url = arguments?.getString(RemoteConfigUtil.URL_KEY)
             ?: throw RuntimeException("url is null")
         binding.mainWebView.loadUrl(url)
+        setValue(url)
+    }
+    private fun setValue(value: String) {
+        sharedPreferences.edit().apply {
+            putString(RemoteConfigUtil.URL_KEY, value)
+        }.apply()
     }
 
     companion object {
