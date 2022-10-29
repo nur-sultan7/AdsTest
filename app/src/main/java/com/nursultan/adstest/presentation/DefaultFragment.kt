@@ -7,7 +7,9 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.nursultan.adstest.R
 import com.nursultan.adstest.databinding.FragmentDefaultBinding
+import com.nursultan.adstest.domain.Exercise
 import com.nursultan.adstest.presentation.adapters.ExercisesAdapter
 
 
@@ -35,6 +37,11 @@ class DefaultFragment : Fragment() {
         return binding.root
     }
 
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.rvExercises.layoutManager =
@@ -42,6 +49,20 @@ class DefaultFragment : Fragment() {
         adapter = ExercisesAdapter()
         binding.rvExercises.adapter = adapter
         adapter.submitList(viewModel.getAllExercises())
+        setOnItemClickListener()
+    }
+
+    private fun setOnItemClickListener() {
+        adapter.setOnClickListener = {
+            launchDetailFragment(it)
+        }
+    }
+
+    private fun launchDetailFragment(exercise: Exercise) {
+        requireActivity().supportFragmentManager.beginTransaction()
+            .replace(R.id.main_container, DetailFragment.newInstance(exercise))
+            .addToBackStack(null)
+            .commit()
     }
 
     companion object {

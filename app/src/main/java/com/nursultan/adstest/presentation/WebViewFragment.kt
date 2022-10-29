@@ -41,6 +41,11 @@ class WebViewFragment : Fragment() {
         }.apply()
     }
 
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
+
     companion object {
 
         fun newInstance(url: String): WebViewFragment {

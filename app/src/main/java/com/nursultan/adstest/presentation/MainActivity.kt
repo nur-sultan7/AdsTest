@@ -44,7 +44,6 @@ class MainActivity : AppCompatActivity() {
                 launchWebViewFragment(it)
             }
         }
-
     }
 
     private fun fireLoad() {

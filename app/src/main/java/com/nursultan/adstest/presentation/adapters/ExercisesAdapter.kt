@@ -10,6 +10,8 @@ import com.nursultan.adstest.domain.Exercise
 class ExercisesAdapter :
     ListAdapter<Exercise, ExercisesAdapter.ViewHolderExercise>(DiffUtilExercises) {
 
+    lateinit var setOnClickListener: (exercise: Exercise) -> Unit
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolderExercise {
         return ViewHolderExercise.create(parent)
     }
@@ -17,6 +19,9 @@ class ExercisesAdapter :
     override fun onBindViewHolder(holder: ViewHolderExercise, position: Int) {
         val exercise = getItem(position)
         holder.bind(exercise)
+        holder.itemView.setOnClickListener {
+            setOnClickListener.invoke(exercise)
+        }
     }
 
     class ViewHolderExercise(private val binding: ItemExerciseBinding) :

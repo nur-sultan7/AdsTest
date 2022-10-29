@@ -37,7 +37,9 @@ class LoadingFragment : Fragment() {
             requireActivity().window.statusBarColor =
                 requireActivity().getColor(R.color.white)
         }
+        _binding = null
     }
+
 
     companion object {
         fun newInstance(): LoadingFragment {

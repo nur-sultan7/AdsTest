@@ -7,6 +7,6 @@ import kotlinx.parcelize.Parcelize
 data class Exercise(
     val imgResourceId: Int,
     val name: String,
-    val specific: String,
+    val spec: String,
     val description: String
 ):Parcelable
