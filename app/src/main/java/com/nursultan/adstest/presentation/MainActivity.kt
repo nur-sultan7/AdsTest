@@ -13,26 +13,32 @@ import com.nursultan.adstest.databinding.ActivityMainBinding
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ViewBinding
-
-    private val remoteConfig by lazy {
-        (application as AdsApp).remoteConfigUtil
-    }
+    private lateinit var remoteConfigUtil: RemoteConfigUtil
     private val sharedPreferences by lazy {
         application.getSharedPreferences(STORAGE_NAME, Context.MODE_PRIVATE)
     }
     private var path: String? = null
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        launchLoadingScreen()
+        remoteConfigUtil = (application as AdsApp).remoteConfigUtil
         path = getString()
         start()
     }
 
+    private fun launchLoadingScreen() {
+        supportFragmentManager.beginTransaction()
+            .replace(R.id.main_container,LoadingFragment.newInstance())
+            .commit()
+    }
+
     private fun start() {
         if (path.isNullOrEmpty()) {
-            fireLoad()
+            setFetchCompleteObserver()
         } else {
             path?.let {
                 launchWebViewFragment(it)
@@ -42,13 +48,12 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun fireLoad() {
-        val getUrl = remoteConfig.getUrl()
+        val getUrl = remoteConfigUtil.getUrl()
         val brandDevice = Build.MANUFACTURER
         val isSim = checkIsSimAvailable()
         if (getUrl.isEmpty() || brandDevice.lowercase().contains(GOOGLE_DEVICE) || !isSim) {
             launchDefaultFragment()
-        } else
-            launchWebViewFragment(getUrl)
+        } else launchWebViewFragment(getUrl)
     }
 
     private fun checkIsSimAvailable(): Boolean {
@@ -61,6 +66,12 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    private fun setFetchCompleteObserver() {
+        remoteConfigUtil.remoteConfig.fetchAndActivate().addOnCompleteListener {
+            fireLoad()
+        }
+    }
+
 
     private fun getString(): String? {
         return sharedPreferences.getString(RemoteConfigUtil.URL_KEY, null)
@@ -68,14 +79,12 @@ class MainActivity : AppCompatActivity() {
 
     private fun launchDefaultFragment() {
         supportFragmentManager.beginTransaction()
-            .replace(R.id.main_container, DefaultFragment.newInstance())
-            .commit()
+            .replace(R.id.main_container, DefaultFragment.newInstance()).commit()
     }
 
     private fun launchWebViewFragment(url: String) {
         supportFragmentManager.beginTransaction()
-            .replace(R.id.main_container, WebViewFragment.newInstance(url))
-            .commit()
+            .replace(R.id.main_container, WebViewFragment.newInstance(url)).commit()
     }
 
     companion object {

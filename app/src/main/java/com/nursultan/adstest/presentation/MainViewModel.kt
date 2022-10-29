@@ -13,4 +13,5 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
     fun getAllExercises(): List<Exercise> {
         return getExercisesUseCase.invoke()
     }
+
 }
