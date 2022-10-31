@@ -1,5 +1,6 @@
 package ersecboom.bet.kof.presentation
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -30,11 +31,13 @@ class WebViewFragment : Fragment() {
         return binding.root
     }
 
+    @SuppressLint("SetJavaScriptEnabled")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         url = arguments?.getString(RemoteConfigUtil.URL_KEY)
             ?: throw RuntimeException("url is null")
         binding.mainWebView.webViewClient = WebViewClient()
+        binding.mainWebView.settings.javaScriptEnabled = true
         binding.mainWebView.loadUrl(url)
         saveValue(url)
     }
