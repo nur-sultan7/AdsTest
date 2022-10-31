@@ -5,6 +5,8 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.webkit.WebViewClient
+import androidx.activity.OnBackPressedCallback
 import androidx.fragment.app.Fragment
 import com.nursultan.adstest.databinding.FragmentWebviewBinding
 
@@ -31,11 +33,31 @@ class WebViewFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         url = arguments?.getString(RemoteConfigUtil.URL_KEY)
             ?: throw RuntimeException("url is null")
+        binding.mainWebView.webViewClient = WebViewClient()
         binding.mainWebView.loadUrl(url)
-        setValue(url)
+        saveValue(url)
     }
 
-    private fun setValue(value: String) {
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setOnBackPressedDispatcher()
+    }
+
+    private fun setOnBackPressedDispatcher() {
+        val callback = object : OnBackPressedCallback(true) {
+            override fun handleOnBackPressed() {
+                if (binding.mainWebView.canGoBack())
+                    binding.mainWebView.goBack()
+            }
+        }
+        requireActivity().onBackPressedDispatcher.addCallback(
+            this,
+            callback
+        )
+    }
+
+
+    private fun saveValue(value: String) {
         sharedPreferences.edit().apply {
             putString(RemoteConfigUtil.URL_KEY, value)
         }.apply()

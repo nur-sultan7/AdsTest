@@ -32,7 +32,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun launchLoadingScreen() {
         supportFragmentManager.beginTransaction()
-            .replace(R.id.main_container,LoadingFragment.newInstance())
+            .replace(R.id.main_container, LoadingFragment.newInstance())
             .commit()
     }
 
@@ -71,7 +71,6 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-
     private fun getString(): String? {
         return sharedPreferences.getString(RemoteConfigUtil.URL_KEY, null)
     }
@@ -88,6 +87,6 @@ class MainActivity : AppCompatActivity() {
 
     companion object {
         const val STORAGE_NAME = "data"
-        const val GOOGLE_DEVICE = "google"
+        const val GOOGLE_DEVICE = "google2"
     }
 }
