@@ -1,10 +1,10 @@
-package com.nursultan.adstest.presentation
+package ersecboom.bet.kof.presentation
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
-import com.nursultan.adstest.data.RepositoryImp
-import com.nursultan.adstest.domain.Exercise
-import com.nursultan.adstest.domain.GetExercisesUseCase
+import ersecboom.bet.kof.data.RepositoryImp
+import ersecboom.bet.kof.domain.Exercise
+import ersecboom.bet.kof.domain.GetExercisesUseCase
 
 class MainViewModel(application: Application) : AndroidViewModel(application) {
     private val repositoryImp = RepositoryImp(application)

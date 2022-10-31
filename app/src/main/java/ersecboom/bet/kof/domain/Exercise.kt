@@ -1,4 +1,4 @@
-package com.nursultan.adstest.domain
+package ersecboom.bet.kof.domain
 
 import android.os.Parcelable
 import kotlinx.parcelize.Parcelize

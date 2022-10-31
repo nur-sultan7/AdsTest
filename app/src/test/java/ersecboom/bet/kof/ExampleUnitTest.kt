@@ -1,4 +1,4 @@
-package com.nursultan.adstest
+package ersecboom.bet.kof
 
 import org.junit.Test
 

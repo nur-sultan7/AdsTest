@@ -1,11 +1,12 @@
-package com.nursultan.adstest.presentation.adapters
+package ersecboom.bet.kof.presentation.adapters
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
-import com.nursultan.adstest.databinding.ItemExerciseBinding
-import com.nursultan.adstest.domain.Exercise
+import ersecboom.bet.kof.databinding.ItemExerciseBinding
+
+import ersecboom.bet.kof.domain.Exercise
 
 class ExercisesAdapter :
     ListAdapter<Exercise, ExercisesAdapter.ViewHolderExercise>(DiffUtilExercises) {

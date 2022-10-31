@@ -1,12 +1,13 @@
-package com.nursultan.adstest.presentation
+package ersecboom.bet.kof.presentation
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import com.nursultan.adstest.databinding.FragmentDetailsBinding
-import com.nursultan.adstest.domain.Exercise
+import ersecboom.bet.kof.databinding.FragmentDetailsBinding
+
+import ersecboom.bet.kof.domain.Exercise
 
 class DetailFragment : Fragment() {
     private var _binding: FragmentDetailsBinding? = null

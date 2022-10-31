@@ -1,9 +1,10 @@
-package com.nursultan.adstest.data
+package ersecboom.bet.kof.data
 
 import android.content.Context
-import com.nursultan.adstest.R
-import com.nursultan.adstest.domain.Exercise
-import com.nursultan.adstest.domain.Repository
+import ersecboom.bet.kof.R
+
+import ersecboom.bet.kof.domain.Exercise
+import ersecboom.bet.kof.domain.Repository
 
 class RepositoryImp(private val context: Context) : Repository {
     override fun getExercise(): List<Exercise> {

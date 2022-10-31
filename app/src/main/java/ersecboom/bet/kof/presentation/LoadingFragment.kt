@@ -1,4 +1,4 @@
-package com.nursultan.adstest.presentation
+package ersecboom.bet.kof.presentation
 
 import android.os.Build
 import android.os.Bundle
@@ -6,8 +6,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import com.nursultan.adstest.R
-import com.nursultan.adstest.databinding.LoadingScreenBinding
+import ersecboom.bet.kof.R
+import ersecboom.bet.kof.databinding.LoadingScreenBinding
+
 
 class LoadingFragment : Fragment() {
     private var _binding: LoadingScreenBinding? = null

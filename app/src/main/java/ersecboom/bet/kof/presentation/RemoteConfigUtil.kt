@@ -1,4 +1,4 @@
-package com.nursultan.adstest.presentation
+package ersecboom.bet.kof.presentation
 
 
 import com.google.firebase.ktx.Firebase

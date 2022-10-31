@@ -1,4 +1,4 @@
-package com.nursultan.adstest
+package ersecboom.bet.kof
 
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4

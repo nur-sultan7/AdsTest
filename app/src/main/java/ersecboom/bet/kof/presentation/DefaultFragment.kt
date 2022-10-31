@@ -1,4 +1,4 @@
-package com.nursultan.adstest.presentation
+package ersecboom.bet.kof.presentation
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -7,10 +7,12 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.nursultan.adstest.R
-import com.nursultan.adstest.databinding.FragmentDefaultBinding
-import com.nursultan.adstest.domain.Exercise
-import com.nursultan.adstest.presentation.adapters.ExercisesAdapter
+import ersecboom.bet.kof.R
+import ersecboom.bet.kof.databinding.FragmentDefaultBinding
+
+
+import ersecboom.bet.kof.domain.Exercise
+import ersecboom.bet.kof.presentation.adapters.ExercisesAdapter
 
 
 class DefaultFragment : Fragment() {

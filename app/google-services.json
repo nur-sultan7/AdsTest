@@ -1,33 +1,33 @@
 {
   "project_info": {
-    "project_number": "842502199315",
-    "project_id": "ads-test-e88fa",
-    "storage_bucket": "ads-test-e88fa.appspot.com"
+    "project_number": "57735776934",
+    "project_id": "vlakis-ab108",
+    "storage_bucket": "vlakis-ab108.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:842502199315:android:fbc54c89eede95961e07e6",
+        "mobilesdk_app_id": "1:57735776934:android:0a986056c9c45065e4c267",
         "android_client_info": {
-          "package_name": "com.nursultan.adstest"
+          "package_name": "ersecboom.bet.kof"
         }
       },
       "oauth_client": [
         {
-          "client_id": "842502199315-g6v2vhtph8q8rg20horbt1s9ba6mm1qk.apps.googleusercontent.com",
+          "client_id": "57735776934-vicj079vvnunj0c5ar5vpip31ntis98c.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyBTtnHrsynIuEXFMIPvfZgtczUfoXVJfKo"
+          "current_key": "AIzaSyBrU6zN-QL9uJr_tpiEp_M-m7o1hBHlNfY"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "842502199315-g6v2vhtph8q8rg20horbt1s9ba6mm1qk.apps.googleusercontent.com",
+              "client_id": "57735776934-vicj079vvnunj0c5ar5vpip31ntis98c.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

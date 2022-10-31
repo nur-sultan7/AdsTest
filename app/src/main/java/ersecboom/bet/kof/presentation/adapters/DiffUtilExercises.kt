@@ -1,7 +1,7 @@
-package com.nursultan.adstest.presentation.adapters
+package ersecboom.bet.kof.presentation.adapters
 
 import androidx.recyclerview.widget.DiffUtil
-import com.nursultan.adstest.domain.Exercise
+import ersecboom.bet.kof.domain.Exercise
 
 object DiffUtilExercises : DiffUtil.ItemCallback<Exercise>() {
     override fun areItemsTheSame(oldItem: Exercise, newItem: Exercise): Boolean {
