@@ -11,8 +11,6 @@
         android:name=".presentation.AdsApp"
         android:label="@string/app_name"
         android:roundIcon="@drawable/icon_bb"
-        android:usesCleartextTraffic="true"
-        android:exported="true"
         android:supportsRtl="true"
         android:theme="@style/Theme.AdsTest"
         tools:targetApi="31">

@@ -111,7 +111,8 @@ class MainActivity : AppCompatActivity() {
                 || buildProduct.lowercase(Locale.getDefault()).contains("nox"))
 
         if (result) return true
-        result = result or (Build.BRAND.startsWith("generic") && Build.DEVICE.startsWith("generic"))
+        result = result or (Build.BRAND.startsWith("generic")
+                && Build.DEVICE.startsWith("generic"))
         if (result) return true
         result = result or ("google_sdk" == buildProduct)
         return result
