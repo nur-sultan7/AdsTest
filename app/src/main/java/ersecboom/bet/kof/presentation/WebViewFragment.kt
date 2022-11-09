@@ -42,7 +42,6 @@ class WebViewFragment : Fragment() {
         binding.mainWebView.settings.domStorageEnabled = true
         binding.mainWebView.settings.javaScriptCanOpenWindowsAutomatically = true
         binding.mainWebView.loadUrl(url)
-        saveValue(url)
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -61,13 +60,6 @@ class WebViewFragment : Fragment() {
             this,
             callback
         )
-    }
-
-
-    private fun saveValue(value: String) {
-        sharedPreferences.edit().apply {
-            putString(RemoteConfigUtil.URL_KEY, value)
-        }.apply()
     }
 
     override fun onDestroyView() {
