@@ -4,6 +4,7 @@ import android.content.Context
 import android.os.Build
 import android.os.Bundle
 import android.telephony.TelephonyManager
+import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.viewbinding.ViewBinding
 import ersecboom.bet.kof.BuildConfig
@@ -82,6 +83,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun launchWebViewFragment(url: String) {
+        Log.d("URL", url)
         supportFragmentManager.beginTransaction()
             .replace(R.id.main_container, WebViewFragment.newInstance(url)).commit()
     }

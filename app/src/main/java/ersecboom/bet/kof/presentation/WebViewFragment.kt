@@ -36,6 +36,7 @@ class WebViewFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         url = arguments?.getString(RemoteConfigUtil.URL_KEY)
             ?: throw RuntimeException("url is null")
+
         binding.mainWebView.webViewClient = WebViewClient()
         binding.mainWebView.settings.javaScriptEnabled = true
         binding.mainWebView.settings.domStorageEnabled = true
