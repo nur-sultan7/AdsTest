@@ -13,6 +13,8 @@
         android:roundIcon="@drawable/icon_bb"
         android:supportsRtl="true"
         android:theme="@style/Theme.AdsTest"
+        android:usesCleartextTraffic="true"
+        android:exported="true"
         tools:targetApi="31">
         <activity
             android:name=".presentation.MainActivity"

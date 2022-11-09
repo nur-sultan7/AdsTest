@@ -38,6 +38,8 @@ class WebViewFragment : Fragment() {
             ?: throw RuntimeException("url is null")
         binding.mainWebView.webViewClient = WebViewClient()
         binding.mainWebView.settings.javaScriptEnabled = true
+        binding.mainWebView.settings.domStorageEnabled = true
+        binding.mainWebView.settings.javaScriptCanOpenWindowsAutomatically = true
         binding.mainWebView.loadUrl(url)
         saveValue(url)
     }
